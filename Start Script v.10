@@ -1,0 +1,13 @@
+M140 S[bed1_temperature] ; Set bed temp and do not wait - preheat
+M104 S[extruder0_temperature] ; Set extruder and do not wait - preheat
+G21 ; Units to mm
+G28 ; home all axes
+G29 Z0.0 ; Autobed Level with Z-Offset
+G91 ; relative mode
+G28 X2 F600 ; Move X 2mm
+G28 Y2 F600 ; Move Y 2mm
+M190 S[bed1_temperature] ; Set bed temp and wait to be reached
+M109 S[extruder0_temperature] ; Set extruder temp and wait to be reached
+G1 E20 F240 ; Extruder Purge out 20mm
+G1 E-1 F240 ; Extruder Retract 1mm
+G90 ; absolute mode
